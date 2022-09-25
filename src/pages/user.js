@@ -1,28 +1,31 @@
-import { Box, Button, Link, Paper, Toolbar, Typography } from "@mui/material";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { Avatar, Box, Stack, Typography } from "@mui/material";
+import { useLoaderData } from "react-router-dom";
 import Links from "../components/links";
 import Milestones from "../components/milestones";
+import Layout from "./_layout";
 
 function User() {
-  const navigate = useNavigate();
   const profile = useLoaderData();
 
   return (
-    <Box>
-      <Toolbar>
-        <Button onClick={() => navigate(-1)}>Back</Button>
-      </Toolbar>
-      <Box
-        sx={{
-          backgroundColor: "transparent",
-        }}
-      >
-        <Typography>{profile.name}</Typography>
-        <Typography>{profile.bio}</Typography>
-        <Links links={profile.links} />
-        {profile.milestones && <Milestones milestones={profile.milestones} />}
-      </Box>
-    </Box>
+    <Layout>
+      <Stack direction="column" alignItems="center">
+        <Avatar
+          alt={profile.name}
+          src={profile.avatar}
+          sx={{ height: 150, width: 150 }}
+        />
+        <Box width={{ xs: "100%", sm: "80%" }} m={2}>
+          <Typography variant="h6" fontWeight="bold" textAlign="center">
+            {profile.name}
+          </Typography>
+          <Typography textAlign="center">{profile.bio}</Typography>
+        </Box>
+      </Stack>
+
+      <Links links={profile.links} />
+      {profile.milestones && <Milestones milestones={profile.milestones} />}
+    </Layout>
   );
 }
 

@@ -1,6 +1,7 @@
-import { Box } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import Layout from "./_layout";
 
 function ErrorPage() {
   const [done, setDone] = useState(false);
@@ -15,7 +16,15 @@ function ErrorPage() {
     return <Navigate to="/" />;
   }
 
-  return <Box>there was an error</Box>;
+  return (
+    <Layout>
+      <Stack direction="row" justifyContent="center" sx={{ mt: 5 }}>
+        <Typography textAlign="center" variant="h3">
+          There was an error
+        </Typography>
+      </Stack>
+    </Layout>
+  );
 }
 
 export default ErrorPage;

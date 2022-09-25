@@ -17,15 +17,16 @@ import {
 import { MdBookmarkBorder, MdOutlineSearch } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { HomeContext } from "../contexts/home.context";
+import Layout from "./_layout";
 
 function Home() {
-  const navigate = useNavigate();
   const theme = useTheme();
+  const navigate = useNavigate();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const { query, result, handleQuery } = useContext(HomeContext);
 
   return (
-    <Box>
+    <Layout>
       <Paper
         elevation={1}
         sx={{
@@ -60,46 +61,48 @@ function Home() {
       </Paper>
 
       <Box px={{ xs: 0, sm: 2, md: 5 }} py={1}>
-        <Grid container spacing={3}>
-          {result.map((res, index) => (
-            <Grid item key={index} xs={12} sm={6} md={4}>
-              <Card
-                onClick={() => navigate(`/${res.item.username}`)}
-                sx={{
-                  transition: "all .15s",
-                  "&:hover": {
-                    cursor: "pointer",
-                    transform: "scale(1.05)",
-                    backgroundColor: (theme) => theme.palette.action.focus,
-                  },
-                }}
-              >
-                <CardHeader
-                  action={
-                    <IconButton>
-                      <MdBookmarkBorder />
-                    </IconButton>
-                  }
-                  avatar={
-                    <Avatar
-                      alt={res.item.name}
-                      src={res.item.avatar}
-                      sx={{ height: 70, width: 70 }}
-                    />
-                  }
-                />
-                <CardContent>
-                  <Typography variant="h6" noWrap={true}>
-                    {res.item.name}
-                  </Typography>
-                  <Typography>{res.item.username}</Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+        {result.length > 0 && (
+          <Grid container spacing={3}>
+            {result.map((res, index) => (
+              <Grid item key={index} xs={12} sm={6} md={4}>
+                <Card
+                  onClick={() => navigate(`/${res.item.username}`)}
+                  sx={{
+                    transition: "all .15s",
+                    "&:hover": {
+                      cursor: "pointer",
+                      transform: "scale(1.05)",
+                      backgroundColor: (theme) => theme.palette.action.focus,
+                    },
+                  }}
+                >
+                  <CardHeader
+                    action={
+                      <IconButton>
+                        <MdBookmarkBorder />
+                      </IconButton>
+                    }
+                    avatar={
+                      <Avatar
+                        alt={res.item.name}
+                        src={res.item.avatar}
+                        sx={{ height: 70, width: 70 }}
+                      />
+                    }
+                  />
+                  <CardContent>
+                    <Typography variant="h6" noWrap={true}>
+                      {res.item.name}
+                    </Typography>
+                    <Typography>{res.item.username}</Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        )}
       </Box>
-    </Box>
+    </Layout>
   );
 }
 
