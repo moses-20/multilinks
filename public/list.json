@@ -1,6 +1,12 @@
 [
   {
     "type": "personal",
+    "name": "Moses Gameli",
+    "username": "moses-20",
+    "avatar": "https://github.com/moses-20.png"
+  },
+  {
+    "type": "personal",
     "name": "Aditya Singla",
     "username": "2802AdityA",
     "avatar": "https://github.com/2802AdityA.png",

@@ -61,7 +61,7 @@ function Home() {
       </Paper>
 
       <Box px={{ xs: 0, sm: 2, md: 5 }} py={1}>
-        {result.length > 0 && (
+        {result.length > 0 ? (
           <Grid container spacing={3}>
             {result.map((res, index) => (
               <Grid item key={index} xs={12} sm={6} md={4}>
@@ -100,6 +100,12 @@ function Home() {
               </Grid>
             ))}
           </Grid>
+        ) : (
+          <Box>
+            <Typography textAlign="center" variant="h1">
+              Welcome to Multilinks
+            </Typography>
+          </Box>
         )}
       </Box>
     </Layout>
