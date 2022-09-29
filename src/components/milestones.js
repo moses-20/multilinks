@@ -33,7 +33,7 @@ function Milestones({ milestones }) {
                     width: 300,
                     height: 270,
                     borderRadius: 1,
-                    display: { xs: "none" },
+                    display: "none",
                     boxShadow: (theme) => theme.shadows[1],
                   }}
                 />

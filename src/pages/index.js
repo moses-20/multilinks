@@ -12,7 +12,7 @@ const router = createBrowserRouter([
   {
     path: "/:username",
     element: <User />,
-    errorElement: <ErrorPage />,
+    errorElement: <ErrorPage message="User not found" />,
     loader: getUser,
   },
 ]);

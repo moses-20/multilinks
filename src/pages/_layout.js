@@ -1,7 +1,5 @@
 import { Box, Typography, IconButton, Container, Toolbar } from "@mui/material";
-import Logo from "../material/logo";
-import Main from "../material/main";
-import Page from "../material/page";
+import { Logo, Main, Page } from "../material";
 import { MdOutlineArrowBackIos } from "react-icons/md";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -32,8 +30,8 @@ function Layout({ children }) {
           </Box>
         </Toolbar>
       </Container>
-      <Main>{children}</Main>
-      <Box sx={{ py: 5 }}>
+      <Main component="main">{children}</Main>
+      <Box component="footer" sx={{ py: 5 }}>
         <Typography textAlign="center">&copy; 2022 Multilinks</Typography>
       </Box>
     </Page>

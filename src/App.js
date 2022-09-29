@@ -1,16 +1,16 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import Pages from "./pages";
 import theme from "./theme";
-import AppProviders from "./contexts";
+import HomeContextProvider from "./contexts/home.context";
 
 function App() {
   return (
-    <AppProviders>
+    <HomeContextProvider>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Pages />
       </ThemeProvider>
-    </AppProviders>
+    </HomeContextProvider>
   );
 }
 
